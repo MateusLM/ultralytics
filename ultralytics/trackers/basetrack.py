@@ -12,6 +12,9 @@ class TrackState:
     Tracked = 1
     Lost = 2
     Removed = 3
+    Absent = 4
+    Absent_Removed = 5
+    Occluded = 6
 
 
 class BaseTrack:
@@ -65,7 +68,20 @@ class BaseTrack:
         """Mark the track as removed."""
         self.state = TrackState.Removed
 
+    def mark_absent_removed(self):
+        self.state = TrackState.Absent_Removed
+
+    def mark_absent(self):
+        self.state = TrackState.Absent
+
+    def mark_occluded(self):
+        self.state = TrackState.Occluded
+
     @staticmethod
     def reset_id():
         """Reset the global track ID counter."""
+        BaseTrack._count = 0
+
+    @staticmethod
+    def reset():
         BaseTrack._count = 0

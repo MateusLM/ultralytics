@@ -8,9 +8,10 @@ from ultralytics.utils import IterableSimpleNamespace, yaml_load
 from ultralytics.utils.checks import check_yaml
 
 from .bot_sort import BOTSORT
+from .byte_counter import BYTETracker_Counter
 from .byte_tracker import BYTETracker
 
-TRACKER_MAP = {'bytetrack': BYTETracker, 'botsort': BOTSORT}
+TRACKER_MAP = {'bytetrack': BYTETracker, 'botsort': BOTSORT, 'bytecounter': BYTETracker_Counter}
 
 
 def on_predict_start(predictor, persist=False):
