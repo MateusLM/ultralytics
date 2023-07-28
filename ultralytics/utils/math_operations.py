@@ -7,8 +7,7 @@ import numpy as np
 from shapely.geometry import Polygon, Point, LineString, box
 from shapely.ops import nearest_points
 
-import global_variables as GV
-
+import ultralytics.utils.global_variables as GV
 
 def tlwh_to_center_point(tlwh):
     ret = np.asarray(tlwh).copy()

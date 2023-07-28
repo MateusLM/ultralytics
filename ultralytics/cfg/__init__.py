@@ -8,13 +8,14 @@ from difflib import get_close_matches
 from pathlib import Path
 from types import SimpleNamespace
 from typing import Dict, List, Union
+from ultralytics.cfg.app.app import app
 
 from ultralytics.utils import (DEFAULT_CFG, DEFAULT_CFG_DICT, DEFAULT_CFG_PATH, LOGGER, ROOT, SETTINGS, SETTINGS_YAML,
                                IterableSimpleNamespace, __version__, checks, colorstr, deprecation_warn, yaml_load,
                                yaml_print)
 
 # Define valid tasks and modes
-MODES = 'train', 'val', 'predict', 'export', 'track', 'benchmark'
+MODES = 'train', 'val', 'predict', 'export', 'track', 'benchmark', 'app'
 TASKS = 'detect', 'segment', 'classify', 'pose'
 TASK2DATA = {'detect': 'coco8.yaml', 'segment': 'coco8-seg.yaml', 'classify': 'imagenet100', 'pose': 'coco8-pose.yaml'}
 TASK2MODEL = {
@@ -367,6 +368,11 @@ def entrypoint(debug=''):
         LOGGER.warning("WARNING ⚠️ 'yolo mode=checks' is deprecated. Use 'yolo checks' instead.")
         checks.check_yolo()
         return
+    if mode == 'app':
+        app()
+        print(overrides)
+        exit(1)
+
 
     # Task
     task = overrides.pop('task', None)
@@ -418,9 +424,11 @@ def entrypoint(debug=''):
             overrides['format'] = DEFAULT_CFG.format or 'torchscript'
             LOGGER.warning(f"WARNING ⚠️ 'format' is missing. Using default 'format={overrides['format']}'.")
 
+
+
     # Run command in python
     # getattr(model, mode)(**vars(get_cfg(overrides=overrides)))  # default args using default.yaml
-    getattr(model, mode)(**overrides)  # default args from model
+    #getattr(model, mode)(**overrides)  # default args from model
 
 
 # Special modes --------------------------------------------------------------------------------------------------------

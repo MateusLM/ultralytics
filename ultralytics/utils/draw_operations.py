@@ -1,8 +1,8 @@
 import cv2
 import numpy as np
 
-from global_variables import BUFFER_LINE
-from math_operations import predict_point_pos, calculate_direction_pt, add_degree
+from ultralytics.utils.global_variables import BUFFER_LINE
+from ultralytics.utils.math_operations import predict_point_pos, calculate_direction_pt, add_degree
 
 
 def plot_tracking(image, ROI_coordinates, online_targets, CLASSES, lines=None, frame_id=1, fps=0., ids2=None,

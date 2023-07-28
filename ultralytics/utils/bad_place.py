@@ -1,4 +1,4 @@
-from math_operations import get_avg_point
+from .math_operations import get_avg_point
 
 
 class BasePlace(object):

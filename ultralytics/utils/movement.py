@@ -1,7 +1,4 @@
-import numpy as np
-
-from global_variables import *
-from math_operations import calculate_distance, sum_line_distances, average_dir
+from ultralytics.utils.math_operations import calculate_distance, sum_line_distances
 
 
 class Movement(object):

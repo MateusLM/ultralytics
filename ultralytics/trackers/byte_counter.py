@@ -16,7 +16,7 @@ from ..utils.math_operations import calculate_distance, calculate_velocity, calc
     calculate_diff_degree, average_dir, check_class, is_in_reasonable_distance, closest_candidate_distance, \
     associate_track, get_avg_point, is_valid_direction, overlap_time, has_category_in_common, find_tracking_tlbr_index, \
     closest_region_distance, closest_line_distance, find_end_frame, get_last_tracked_frame, overlap
-from basetrack import BaseTrack, TrackState
+from .basetrack import BaseTrack, TrackState
 from ultralytics.utils.draw_operations import get_color
 from .utils.kalman_filter import KalmanFilterXYAH
 from ..utils.movement import Movement
